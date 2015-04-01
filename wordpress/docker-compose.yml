@@ -1,0 +1,22 @@
+wordpress:
+  image: wordpress:apache
+  links:
+    - db:mysql
+  ports:
+    - 8099:80
+  environment:
+#    WORDPRESS_DB_USER: wp411
+#    WORDPRESS_DB_PASSWORD: wp411
+    WORDPRESS_DB_NAME: wp411
+
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: secret
+
+# -e WORDPRESS_DB_HOST=... (defaults to the IP and port of the linked mysql container)
+# -e WORDPRESS_DB_USER=... (defaults to “root”)
+# -e WORDPRESS_DB_PASSWORD=... (defaults to the value of the MYSQL_ROOT_PASSWORD environment variable from the linked mysql container)
+# -e WORDPRESS_DB_NAME=...
+# 
+# Execute : boot2docker start e depois docker-compose up para iniciar o Wordpress
